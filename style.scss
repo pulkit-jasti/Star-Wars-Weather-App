@@ -1,0 +1,33 @@
+//COLORS
+$bright-red: #ff5851;
+$yellow: #fdef52;
+$gray: #343436;
+$not-black-but-dark: #1c1b20;
+$silver: #f8f8f8;
+
+//GLOBAL STYLES
+* {
+	margin: 0px;
+	padding: 0px;
+	box-sizing: border-box;
+
+	background-size: cover;
+	background-repeat: no-repeat;
+
+	font-family: monospace;
+}
+
+//MIXIN
+@mixin flexcenter {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+//MAIN CSS
+.landing-page {
+	//overflow-x: hidden;
+	height: 100vh;
+	width: 100%;
+	background-color: lightcoral;
+}
