@@ -31,8 +31,9 @@ function getWeather(lat, long) {
 	fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=180aa9da1467549c9761e5a9a2daad88`)
 		.then(response => response.json())
 		.then(result => {
-			data = result;
-			console.log(Math.floor(data.main.temp - 273.15));
+			temperature = Math.floor(result.main.temp - 273.15);
+			console.log(temperature);
+			document.getElementById('temp').textContent = `${temperature}° C`;
 		})
 		.catch(err => {
 			alert(err);
