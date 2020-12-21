@@ -42,32 +42,32 @@ planetData = [
 	{
 		weather: 'Thunderstorm',
 		planetName: 'Kamino',
-		imgSrc: 'kamino.png',
+		imgSrc: 'https://raw.githubusercontent.com/pulkit-jasti/Star-Wars-Weather-App/main/assets/kamino.png',
 	},
 	{
 		weather: 'Drizzle',
 		planetName: 'Kashyyyk',
-		imgSrc: 'dagobah.jpg',
+		imgSrc: 'https://raw.githubusercontent.com/pulkit-jasti/Star-Wars-Weather-App/main/assets/dagobah.jpg',
 	},
 	{
 		weather: 'Rain',
 		planetName: 'Kamino',
-		imgSrc: 'kamino.png',
+		imgSrc: 'https://raw.githubusercontent.com/pulkit-jasti/Star-Wars-Weather-App/main/assets/kamino.png',
 	},
 	{
 		weather: 'Snow',
 		planetName: 'Hoth',
-		imgSrc: 'hoth.jpg',
+		imgSrc: 'https://raw.githubusercontent.com/pulkit-jasti/Star-Wars-Weather-App/main/assets/hoth.jpg',
 	},
 	{
 		weather: 'Mist',
 		planetName: 'Dagobah',
-		imgSrc: 'dagobah.jpg',
+		imgSrc: 'https://raw.githubusercontent.com/pulkit-jasti/Star-Wars-Weather-App/main/assets/dagobah.jpg',
 	},
 	{
 		weather: 'Smoke',
 		planetName: 'Balosar',
-		imgSrc: 'balosar.jpg',
+		imgSrc: 'https://raw.githubusercontent.com/pulkit-jasti/Star-Wars-Weather-App/main/assets/balosar.jpg',
 	},
 	{
 		weather: 'Haze',
@@ -77,44 +77,44 @@ planetData = [
 	{
 		weather: 'Dust',
 		planetName: 'Tatooine',
-		imgSrc: 'tatooine.jpg',
+		imgSrc: 'https://raw.githubusercontent.com/pulkit-jasti/Star-Wars-Weather-App/main/assets/tatooine.jpg',
 	},
 	{
 		weather: 'Fog',
 		planetName: 'Endor',
-		imgSrc: 'endor.jpg',
+		imgSrc: 'https://raw.githubusercontent.com/pulkit-jasti/Star-Wars-Weather-App/main/assets/endor.jpg',
 	},
 	{
 		weather: 'Sand',
 		planetName: 'Tatooine',
-		imgSrc: 'tatooine.jpg',
+		imgSrc: 'https://raw.githubusercontent.com/pulkit-jasti/Star-Wars-Weather-App/main/assets/tatooine.jpg',
 	},
 	{
 		weather: 'Ash',
 		planetName: 'Mustafar',
-		imgSrc: 'mustafar.jpg',
+		imgSrc: 'https://raw.githubusercontent.com/pulkit-jasti/Star-Wars-Weather-App/main/assets/mustafar.jpg',
 	},
 	{
 		weather: 'Squall',
 		planetName: 'Kamino',
-		imgSrc: 'kamino.png',
+		imgSrc: 'https://raw.githubusercontent.com/pulkit-jasti/Star-Wars-Weather-App/main/assets/kamino.png',
 	},
 	{
 		weather: 'Tornado',
 		planetName: 'Geonosis',
-		imgSrc: 'geonosis,jpg',
+		imgSrc: 'https://raw.githubusercontent.com/pulkit-jasti/Star-Wars-Weather-App/main/assets/geonosis.jpg',
 	},
 	{
-		weather: 'Clouds ',
+		weather: 'Clouds',
 		planetName: 'Bespin',
-		imgSrc: 'bespin.jpg',
+		imgSrc: 'https://raw.githubusercontent.com/pulkit-jasti/Star-Wars-Weather-App/main/assets/bespin.jpg',
 	},
 ];
 
 function render(data) {
 	let temp = document.getElementById('temp');
 	let info = document.getElementById('info');
-	let bckImage = document.getElementById('bck');
+	let bckImageContainer = document.getElementById('bck-container');
 	let planetName = document.getElementById('planet-name');
 
 	temp.textContent = `${Math.floor(data.main.temp - 273.15)}° C`;
@@ -122,19 +122,21 @@ function render(data) {
 
 	main = data.weather[0].main;
 	let currentPlanet = null;
+	//<img id="bck" src="assets/naboo.jpg" alt="" />
 
 	if (Math.floor(data.main.temp - 273.15) > 40) {
 		info.textContent = "It's burning hot, feels like";
-		bckImage.src = 'https://raw.githubusercontent.com/pulkit-jasti/Pandora-store/master/src/assets/product-images/high-ground.png';
+		bckImageContainer.innerHTML = `<img id="bck" src="https://raw.githubusercontent.com/pulkit-jasti/Star-Wars-Weather-App/main/assets/mustafar.jpg" alt="" />`;
 		planetName.textContent = 'Mustafar';
 	} else {
+		console.log(data.weather[0].main);
 		planetData.forEach(el => {
 			if (el.weather == data.weather[0].main) {
 				currentPlanet = el;
 			}
 		});
 
-		bckImage.src = currentPlanet.imgSrc;
+		bckImageContainer.innerHTML = `<img id="bck" src="${currentPlanet.imgSrc}" alt="" />`;
 		planetName.textContent = currentPlanet.planetName;
 	}
 }
