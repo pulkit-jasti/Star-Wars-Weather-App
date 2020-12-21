@@ -50,7 +50,6 @@ function render(data) {
 	info.textContent = `It's a ${data.weather[0].description}, feels like`;
 
 	main = data.weather[0].main;
-	//main = 'Clear';
 	let currentPlanet = null;
 
 	if (temperature > 40) {
@@ -94,7 +93,7 @@ planetData = [
 	{
 		weather: 'Drizzle',
 		planetName: 'Kashyyyk',
-		imgSrc: () => 'https://raw.githubusercontent.com/pulkit-jasti/Star-Wars-Weather-App/main/assets/dagobah.jpg',
+		imgSrc: () => 'https://raw.githubusercontent.com/pulkit-jasti/Star-Wars-Weather-App/main/assets/kashyyyk.jpg',
 	},
 	{
 		weather: 'Rain',
