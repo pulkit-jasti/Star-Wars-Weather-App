@@ -27,7 +27,6 @@ let getLocation = () => {
 };
 
 function getWeather(lat, long) {
-	let data;
 	fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=180aa9da1467549c9761e5a9a2daad88`)
 		.then(response => response.json())
 		.then(result => {
@@ -43,12 +42,72 @@ planetData = [
 	{
 		weather: 'Thunderstorm',
 		planetName: 'Kamino',
-		imgSrc: 'none',
+		imgSrc: 'kamino.png',
 	},
 	{
 		weather: 'Drizzle',
 		planetName: 'Kashyyyk',
 		imgSrc: 'dagobah.jpg',
+	},
+	{
+		weather: 'Rain',
+		planetName: 'Kamino',
+		imgSrc: 'kamino.png',
+	},
+	{
+		weather: 'Snow',
+		planetName: 'Hoth',
+		imgSrc: 'hoth.jpg',
+	},
+	{
+		weather: 'Mist',
+		planetName: 'Dagobah',
+		imgSrc: 'dagobah.jpg',
+	},
+	{
+		weather: 'Smoke',
+		planetName: 'Balosar',
+		imgSrc: 'balosar.jpg',
+	},
+	{
+		weather: 'Haze',
+		planetName: 'Dagobah',
+		imgSrc: 'https://raw.githubusercontent.com/pulkit-jasti/Star-Wars-Weather-App/main/assets/dagobah.jpg',
+	},
+	{
+		weather: 'Dust',
+		planetName: 'Tatooine',
+		imgSrc: 'tatooine.jpg',
+	},
+	{
+		weather: 'Fog',
+		planetName: 'Endor',
+		imgSrc: 'endor.jpg',
+	},
+	{
+		weather: 'Sand',
+		planetName: 'Tatooine',
+		imgSrc: 'tatooine.jpg',
+	},
+	{
+		weather: 'Ash',
+		planetName: 'Mustafar',
+		imgSrc: 'mustafar.jpg',
+	},
+	{
+		weather: 'Squall',
+		planetName: 'Kamino',
+		imgSrc: 'kamino.png',
+	},
+	{
+		weather: 'Tornado',
+		planetName: 'Geonosis',
+		imgSrc: 'geonosis,jpg',
+	},
+	{
+		weather: 'Clouds ',
+		planetName: 'Bespin',
+		imgSrc: 'bespin.jpg',
 	},
 ];
 
@@ -67,6 +126,7 @@ function render(data) {
 	if (Math.floor(data.main.temp - 273.15) > 40) {
 		info.textContent = "It's burning hot, feels like";
 		bckImage.src = 'https://raw.githubusercontent.com/pulkit-jasti/Pandora-store/master/src/assets/product-images/high-ground.png';
+		planetName.textContent = 'Mustafar';
 	} else {
 		planetData.forEach(el => {
 			if (el.weather == data.weather[0].main) {
