@@ -35,6 +35,7 @@ function getWeather(lat, long) {
 		})
 		.catch(err => {
 			alert(err);
+			console.log(err);
 		});
 }
 
@@ -49,6 +50,7 @@ function render(data) {
 	info.textContent = `It's a ${data.weather[0].description}, feels like`;
 
 	main = data.weather[0].main;
+	//main = 'Clear';
 	let currentPlanet = null;
 
 	if (temperature > 40) {
@@ -60,7 +62,7 @@ function render(data) {
 			planetName.textContent = 'Coruscant';
 			let d = new Date().getHours();
 
-			if (d > 19) {
+			if (d > 18) {
 				bckImageContainer.innerHTML = `<img id="bck" src="https://raw.githubusercontent.com/pulkit-jasti/Star-Wars-Weather-App/main/assets/coruscant-night.jpg" alt="" />`;
 			} else {
 				bckImageContainer.innerHTML = `<img id="bck" src="https://raw.githubusercontent.com/pulkit-jasti/Star-Wars-Weather-App/main/assets/coruscant-day.jpg" alt="" />`;
@@ -71,12 +73,12 @@ function render(data) {
 		}
 	} else {
 		planetData.forEach(el => {
-			if (el.weather == 'Clear') {
+			if (el.weather == main) {
 				currentPlanet = el;
 			}
 		});
 
-		bckImageContainer.innerHTML = `<img id="bck" src="${currentPlanet.imgSrc}" alt="" />`;
+		bckImageContainer.innerHTML = `<img id="bck" src="${currentPlanet.imgSrc()}" alt="" />`;
 		planetName.textContent = currentPlanet.planetName;
 	}
 }
@@ -87,71 +89,77 @@ planetData = [
 	{
 		weather: 'Thunderstorm',
 		planetName: 'Kamino',
-		imgSrc: 'https://raw.githubusercontent.com/pulkit-jasti/Star-Wars-Weather-App/main/assets/kamino.png',
+		imgSrc: () => 'https://raw.githubusercontent.com/pulkit-jasti/Star-Wars-Weather-App/main/assets/kamino.png',
 	},
 	{
 		weather: 'Drizzle',
 		planetName: 'Kashyyyk',
-		imgSrc: 'https://raw.githubusercontent.com/pulkit-jasti/Star-Wars-Weather-App/main/assets/dagobah.jpg',
+		imgSrc: () => 'https://raw.githubusercontent.com/pulkit-jasti/Star-Wars-Weather-App/main/assets/dagobah.jpg',
 	},
 	{
 		weather: 'Rain',
 		planetName: 'Kamino',
-		imgSrc: 'https://raw.githubusercontent.com/pulkit-jasti/Star-Wars-Weather-App/main/assets/kamino.png',
+		imgSrc: () => {
+			let bckList = [
+				'https://raw.githubusercontent.com/pulkit-jasti/Star-Wars-Weather-App/main/assets/kamino.png',
+				'https://raw.githubusercontent.com/pulkit-jasti/Star-Wars-Weather-App/main/assets/rain2.jpg',
+			];
+			return bckList[Math.floor(Math.random() * 2)];
+		},
 	},
 	{
 		weather: 'Snow',
 		planetName: 'Hoth',
-		imgSrc: 'https://raw.githubusercontent.com/pulkit-jasti/Star-Wars-Weather-App/main/assets/hoth.jpg',
+		imgSrc: () => 'https://raw.githubusercontent.com/pulkit-jasti/Star-Wars-Weather-App/main/assets/hoth.jpg',
 	},
 	{
 		weather: 'Mist',
 		planetName: 'Dagobah',
-		imgSrc: 'https://raw.githubusercontent.com/pulkit-jasti/Star-Wars-Weather-App/main/assets/dagobah.jpg',
+		imgSrc: () => 'https://raw.githubusercontent.com/pulkit-jasti/Star-Wars-Weather-App/main/assets/dagobah.jpg',
 	},
 	{
 		weather: 'Smoke',
 		planetName: 'Balosar',
-		imgSrc: 'https://raw.githubusercontent.com/pulkit-jasti/Star-Wars-Weather-App/main/assets/balosar.jpg',
+		imgSrc: () => 'https://raw.githubusercontent.com/pulkit-jasti/Star-Wars-Weather-App/main/assets/balosar.jpg',
 	},
 	{
 		weather: 'Haze',
 		planetName: 'Dagobah',
-		imgSrc: 'https://raw.githubusercontent.com/pulkit-jasti/Star-Wars-Weather-App/main/assets/dagobah.jpg',
+		imgSrc: () => 'https://raw.githubusercontent.com/pulkit-jasti/Star-Wars-Weather-App/main/assets/dagobah.jpg',
 	},
 	{
 		weather: 'Dust',
 		planetName: 'Tatooine',
-		imgSrc: 'https://raw.githubusercontent.com/pulkit-jasti/Star-Wars-Weather-App/main/assets/tatooine.jpg',
+		imgSrc: () => 'https://raw.githubusercontent.com/pulkit-jasti/Star-Wars-Weather-App/main/assets/tatooine.jpg',
 	},
 	{
 		weather: 'Fog',
 		planetName: 'Endor',
-		imgSrc: 'https://raw.githubusercontent.com/pulkit-jasti/Star-Wars-Weather-App/main/assets/endor.jpg',
+		imgSrc: () => 'https://raw.githubusercontent.com/pulkit-jasti/Star-Wars-Weather-App/main/assets/endor.jpg',
 	},
 	{
 		weather: 'Sand',
 		planetName: 'Tatooine',
-		imgSrc: 'https://raw.githubusercontent.com/pulkit-jasti/Star-Wars-Weather-App/main/assets/tatooine.jpg',
+		imgSrc: () => 'https://raw.githubusercontent.com/pulkit-jasti/Star-Wars-Weather-App/main/assets/tatooine.jpg',
 	},
 	{
 		weather: 'Ash',
 		planetName: 'Mustafar',
-		imgSrc: 'https://raw.githubusercontent.com/pulkit-jasti/Star-Wars-Weather-App/main/assets/mustafar.jpg',
+		imgSrc: () => 'https://raw.githubusercontent.com/pulkit-jasti/Star-Wars-Weather-App/main/assets/mustafar.jpg',
 	},
 	{
 		weather: 'Squall',
 		planetName: 'Kamino',
-		imgSrc: 'https://raw.githubusercontent.com/pulkit-jasti/Star-Wars-Weather-App/main/assets/kamino.png',
+		imgSrc: () => 'https://raw.githubusercontent.com/pulkit-jasti/Star-Wars-Weather-App/main/assets/kamino.png',
 	},
 	{
 		weather: 'Tornado',
 		planetName: 'Geonosis',
-		imgSrc: 'https://raw.githubusercontent.com/pulkit-jasti/Star-Wars-Weather-App/main/assets/geonosis.jpg',
+		imgSrc: () => 'https://raw.githubusercontent.com/pulkit-jasti/Star-Wars-Weather-App/main/assets/geonosis.jpg',
 	},
 	{
 		weather: 'Clouds',
 		planetName: 'Bespin',
-		imgSrc: 'https://raw.githubusercontent.com/pulkit-jasti/Star-Wars-Weather-App/main/assets/bespin.jpg',
+		imgSrc: () => 'https://raw.githubusercontent.com/pulkit-jasti/Star-Wars-Weather-App/main/assets/bespin.jpg',
 	},
 ];
