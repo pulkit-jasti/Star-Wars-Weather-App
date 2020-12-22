@@ -50,7 +50,6 @@ function render(data) {
 	info.textContent = `It's a ${data.weather[0].description}, feels like`;
 
 	main = data.weather[0].main;
-	let currentPlanet = null;
 
 	if (temperature > 40) {
 		info.textContent = "It's burning hot, feels like";
@@ -73,12 +72,10 @@ function render(data) {
 	} else {
 		planetData.forEach(el => {
 			if (el.weather == main) {
-				currentPlanet = el;
+				bckImageContainer.innerHTML = `<img id="bck" src="${el.imgSrc()}" alt="" />`;
+				planetName.textContent = el.planetName;
 			}
 		});
-
-		bckImageContainer.innerHTML = `<img id="bck" src="${currentPlanet.imgSrc()}" alt="" />`;
-		planetName.textContent = currentPlanet.planetName;
 	}
 }
 
