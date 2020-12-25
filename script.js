@@ -7,22 +7,22 @@ let getLocation = () => {
 			error => {
 				switch (error.code) {
 					case error.PERMISSION_DENIED:
-						alert('I find your lack of faith disturbing');
+						alert('I find your lack of faith disturbing 1');
 						break;
 					case error.POSITION_UNAVAILABLE:
-						alert('I find your lack of faith disturbing');
+						alert('I find your lack of faith disturbing 2');
 						break;
 					case error.TIMEOUT:
-						alert('I find your lack of faith disturbing');
+						alert('I find your lack of faith disturbing 3');
 						break;
 					case error.UNKNOWN_ERROR:
-						alert('I find your lack of faith disturbing');
+						alert('I find your lack of faith disturbing 4');
 						break;
 				}
 			}
 		);
 	} else {
-		alert('I find your lack of faith disturbing');
+		alert('I find your lack of faith disturbing 5');
 	}
 };
 
