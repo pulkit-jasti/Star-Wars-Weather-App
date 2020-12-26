@@ -7,22 +7,22 @@ let getLocation = () => {
 			error => {
 				switch (error.code) {
 					case error.PERMISSION_DENIED:
-						alert('Turn on location services or open the websit on desktop');
+						alert('Turn on location services or open the website on desktop');
 						break;
 					case error.POSITION_UNAVAILABLE:
-						alert('Turn on location services or open the websit on desktop');
+						alert('Turn on location services or open the website on desktop');
 						break;
 					case error.TIMEOUT:
-						alert('Turn on location services or open the websit on desktop');
+						alert('Turn on location services or open the website on desktop');
 						break;
 					case error.UNKNOWN_ERROR:
-						alert('Turn on location services or open the websit on desktop');
+						alert('Turn on location services or open the website on desktop');
 						break;
 				}
 			}
 		);
 	} else {
-		alert('Turn on location services or open the websit on desktop');
+		alert('Turn on location services or open the website on desktop');
 	}
 };
 
