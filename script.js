@@ -7,22 +7,22 @@ let getLocation = () => {
 			error => {
 				switch (error.code) {
 					case error.PERMISSION_DENIED:
-						alert('I find your lack of faith disturbing 1');
+						alert('Turn on location services or open the websit on desktop');
 						break;
 					case error.POSITION_UNAVAILABLE:
-						alert('I find your lack of faith disturbing 2');
+						alert('Turn on location services or open the websit on desktop');
 						break;
 					case error.TIMEOUT:
-						alert('I find your lack of faith disturbing 3');
+						alert('Turn on location services or open the websit on desktop');
 						break;
 					case error.UNKNOWN_ERROR:
-						alert('I find your lack of faith disturbing 4');
+						alert('Turn on location services or open the websit on desktop');
 						break;
 				}
 			}
 		);
 	} else {
-		alert('I find your lack of faith disturbing 5');
+		alert('Turn on location services or open the websit on desktop');
 	}
 };
 
